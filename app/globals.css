@@ -1,43 +1,662 @@
+/* =============================================================================
+   Facebook social landing — stylesheet
+   Hebrew, RTL. Two variable families from next/font: Rubik (display), Heebo (text).
+   Logical properties throughout: in dir="rtl", inline-start = right, inline-end = left.
+   ========================================================================== */
 
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:#f6faff;color:#071842;font-family:'Noto Sans Hebrew',Arial,sans-serif;line-height:1.65}main{max-width:1160px;margin:auto;background:white}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #174da8;outline-offset:5px}.hero{display:grid;grid-template-columns:1fr 1.06fr;direction:ltr;align-items:stretch;background:radial-gradient(ellipse at 100% 10%,white,#edf6ff 55%,#c6e4ff);overflow:hidden}.hero-art{min-width:0;position:relative;overflow:hidden}.hero-art img{width:100%;height:100%;object-fit:cover;object-position:left bottom;display:block}.hero-copy{direction:rtl;text-align:right;align-self:center;padding:42px 28px 34px 0}.hero h1{font-weight:900;letter-spacing:-1.1px;line-height:1.24;font-size:43px;margin:0 0 18px}.hero h1 span{display:block;white-space:nowrap}.hero h1 .blue{color:#0962ed}.lead{font-size:23px;font-weight:700;margin:0 0 0}.sub{font-size:21px;color:#415976;margin:0 0 21px}.cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;text-align:center;background:linear-gradient(155deg,#18ca4e,#079735);border-radius:999px;color:white;font-size:23px;font-weight:800;text-decoration:none;padding:15px 22px;min-height:65px;box-shadow:0 9px 19px #16884521;white-space:nowrap}.cta>svg{width:37px;height:37px;flex:none}.cta>.arrow{width:20px;height:25px}.cta:hover{filter:brightness(.96)}.micro{font-size:14px;color:#54708b;text-align:center;margin:11px 0 0}.features{padding:30px 32px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.feature{border:1px solid #eef4fb;border-radius:21px;background:linear-gradient(140deg,#f7fbff,#edf5fc);text-align:center;padding:23px 10px 21px}.feature svg{color:#0664f5;width:48px;height:48px}.feature h3{font-size:20px;line-height:1.4;margin:9px 0 6px}.feature p{font-size:15px;line-height:1.65;color:#526985;margin:0}.intro{text-align:center;padding:23px 55px 27px}h2{font-size:31px;line-height:1.4;margin:0 0 12px;font-weight:800}.intro p{font-size:19px;max-width:790px;margin:0 auto 10px;color:#344c70}.intro .disclosure{font-size:15px;background:#f1f6fd;border-right:3px solid #4f90f1;border-radius:12px;padding:14px 20px;text-align:right;margin-top:19px;color:#355278}.faq{padding:12px 40px 29px;background:linear-gradient(white,#f8fbff)}.faq h2{text-align:center;margin-bottom:24px}.faq details{border:1px solid #dbe7f8;border-radius:16px;background:#fff;margin-bottom:13px;padding:0 23px}.faq summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:21px;font-weight:750;padding:17px 0}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:'+';font-size:27px;line-height:1;font-weight:400;color:#0765e9}.faq details[open] summary:after{content:'−'}.answer{color:#485f80;font-size:17px;padding:0 0 19px;line-height:1.8}.closing{text-align:center;padding:17px 30px 31px;background:#f8fbff}.closing .phone{font-size:18px;color:#3a587d;margin:14px 0 0}.closing .micro{font-size:14px}footer{font-size:12px;text-align:center;color:#60748f;padding:20px 30px;border-top:1px solid #e8eef8}footer p{margin:0 0 9px}.show-popup{font-family:inherit;font-size:13px;border:1px solid #bdd1ef;padding:7px 14px;border-radius:20px;background:#f7fbff;color:#315582;cursor:pointer}dialog{border:1px solid #d4e4f7;border-radius:26px;width:min(490px,calc(100% - 36px));max-height:85vh;overflow:auto;text-align:center;padding:43px 27px 31px;background:linear-gradient(145deg,white,#edf7ff);color:#08275d;box-shadow:0 20px 80px #041f5840}dialog::backdrop{background:#07173388}.close-popup{position:absolute;top:9px;left:13px;background:transparent;color:#5a7296;border:0;font-size:34px;line-height:1.2;cursor:pointer}.modal-icon{width:73px;height:73px;border-radius:50%;background:#0cba46;color:#fff;display:grid;place-items:center;margin:0 auto 18px}.modal-icon svg{width:53px;height:53px}dialog h2{font-size:29px;line-height:1.4}dialog p{color:#496586;margin:12px 0 22px}dialog .cta{font-size:21px}body:has(dialog[open]){overflow:hidden}
-@media(max-width:700px){.hero{grid-template-columns:1fr;display:flex;flex-direction:column-reverse}.hero-copy{text-align:center;padding:29px 18px 23px;align-self:auto}.hero h1{font-size:clamp(29px,8vw,42px);letter-spacing:-.8px}.hero .lead{font-size:20px}.hero .sub{font-size:18px}.hero-art{height:235px;width:100%;background:#e3f2ff}.hero-art img{height:100%;width:100%;object-fit:contain;object-position:center}.cta{font-size:19px;gap:9px;padding:14px 18px;min-height:59px}.cta>svg{width:31px;height:31px}.features{padding:22px 16px 12px;grid-template-columns:repeat(2,1fr);gap:11px}.feature{padding:18px 8px}.feature h3{font-size:17px}.feature p{font-size:13px}.feature svg{width:40px;height:40px}.intro{padding:23px 18px}.intro p{font-size:16px}.intro .disclosure{font-size:14px;padding:12px 14px}h2{font-size:25px}.faq{padding:12px 16px 17px}.faq h2{margin-bottom:18px}.faq details{padding:0 16px}.faq summary{font-size:17px;padding:16px 0;gap:10px;line-height:1.5}.answer{font-size:15px;padding-bottom:16px}.closing{padding:17px 16px 25px}.micro{font-size:12px}.closing .micro{font-size:12px}.closing .phone{font-size:16px}footer{padding:17px 20px;font-size:11px}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+/* --- 1. Design tokens ---------------------------------------------------- */
+:root {
+  /* Type. next/font bakes each family's own fallback list into the variable,
+     so nothing can be usefully appended after it here — the second argument
+     only covers the variable never landing at all. */
+  --font-head: var(--font-display, "Arial Hebrew", Arial, sans-serif);
+  --font-body: var(--font-text, "Arial Hebrew", Arial, sans-serif);
 
-/* Production refinements: readable controls, responsive tablet sizes and reduced motion. */
-html { scroll-behavior: smooth; }
-body { min-width: 280px; }
+  /* Brand blue ramp */
+  --blue-50:  #f4f9ff;
+  --blue-100: #e6f1ff;
+  --blue-200: #d0e4fd;
+  --blue-300: #a9ccf8;
+  --blue-400: #6aa5f2;
+  --blue-500: #2b7cf0;
+  --blue-600: #0962ed;  /* brand accent — 5.27:1 on white */
+  --blue-700: #0b4fba;
+  --blue-800: #0e3c86;
+
+  /* Ink — every value below verified against its real background */
+  --ink:        #071842;  /* 17.2:1 on white */
+  --ink-strong: #12285c;  /* 13.3:1 */
+  --ink-body:   #33496d;  /*  8.8:1 */
+  --ink-muted:  #455d7a;  /*  6.8:1 on white, 5.1:1 on the deepest hero blue */
+
+  /* Surfaces */
+  --paper:     #ffffff;
+  --page:      #eef5fd;
+  --surface:   #f7fbff;
+  --surface-2: #eef5fd;
+
+  /* Lines */
+  --line:        #dde9f7;
+  --line-strong: #c6dbf2;
+  /* Control boundaries carry meaning, so they need 3:1 (WCAG 1.4.11);
+     --line and --line-strong are decorative separators and do not. */
+  --line-control: #5f89b8;  /* 3.51:1 on --surface */
+
+  /* Conversion green — white on --go is 5.1:1 */
+  --go:      #0c7f37;
+  --go-dark: #0a6d2e;
+  --go-deep: #07521f;
+
+  /* Radii */
+  --r-sm:   10px;
+  --r-md:   14px;
+  --r-lg:   20px;
+  --r-xl:   28px;
+  --r-pill: 999px;
+
+  /* Elevation — blue-tinted, because the whole page is blue */
+  --shadow-1: 0 1px 2px rgba(9,40,92,.05), 0 2px 8px rgba(9,40,92,.04);
+  --shadow-2: 0 2px 4px rgba(9,40,92,.05), 0 10px 24px rgba(9,40,92,.07);
+  --shadow-3: 0 10px 24px rgba(9,40,92,.10), 0 30px 64px rgba(9,40,92,.14);
+  --shadow-go: 0 6px 16px rgba(10,110,48,.26);
+
+  /* Layout */
+  --shell: 1160px;
+  --pad: clamp(18px, 4.2vw, 52px);
+  --section-y: clamp(38px, 5vw, 66px);
+
+  /* Motion */
+  --ease: cubic-bezier(.32, .72, 0, 1);
+  --fast: .16s;
+  --mid:  .24s;
+}
+
+/* --- 2. Base ------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  min-inline-size: 280px;
+  overflow-x: clip;               /* safety net; keeps overflow-y visible */
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;              /* Hebrew has no ascender/descender relief — it needs the air */
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(9,98,237,.16);
+}
+
+::selection { background: var(--blue-200); color: var(--ink); }
+
 button { font-family: inherit; }
-.hero-copy { min-width: 0; padding: clamp(24px,3.4vw,42px) 28px 34px 8px; }
-.hero h1 { font-size: clamp(32px,3.7vw,43px); }
-.cta { background: linear-gradient(145deg,#138c42,#08752f); transition: transform .16s ease, box-shadow .16s ease; max-width: 100%; }
-.cta:hover { transform: translateY(-2px); box-shadow: 0 12px 25px #16884526; }
-.cta:active { transform: translateY(0); }
-.hero .cta { font-size: clamp(18px,2vw,23px); }
-.hero .lead { font-size: clamp(18px,2vw,23px); }
-.hero .sub { font-size: clamp(17px,1.85vw,21px); }
-.skip-link { position: fixed; top: 10px; right: 10px; z-index: 30; padding: 10px 18px; background: white; color: #071842; border-radius: 12px; transform: translateY(-160%); }
+
+p { text-wrap: pretty; }
+
+/* Headings use the display face. Hebrew has no uppercase and no ascenders,
+   so tracking stays at 0 except on the largest display sizes. */
+h1, h2 {
+  font-family: var(--font-head);
+  letter-spacing: 0;
+  margin: 0;
+}
+
+main {
+  max-inline-size: var(--shell);
+  margin-inline: auto;
+  background: var(--paper);
+  box-shadow: 0 1px 2px rgba(9,40,92,.04), 0 12px 44px rgba(9,40,92,.07);
+}
+
+/* --- 3. Focus & skip link ------------------------------------------------ */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--blue-600);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  inset-block-start: 10px;
+  inset-inline-start: 10px;       /* RTL → the right edge, where reading starts */
+  z-index: 30;
+  padding: 10px 18px;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-2);
+  transform: translateY(-180%);
+  transition: transform var(--mid) var(--ease);
+}
 .skip-link:focus { transform: translateY(0); }
-.feature h2 { font-size: 20px; margin: 9px 0 6px; line-height: 1.4; }
+
+/* --- 4. Hero ------------------------------------------------------------- */
+/* Natural RTL: column 1 is the right-hand column and holds the copy, column 2
+   is the left and holds the art. No direction override, so every logical
+   property inside the hero resolves the same way as the rest of the page. */
+.hero {
+  display: grid;
+  grid-template-columns: 1.04fr 1fr;
+  align-items: stretch;
+  /* The art sits in column 2, which in RTL is the physical LEFT 49% of the
+     hero. "to right" is deliberately physical, not logical: it has to track
+     where the picture actually is. #c4e6fc is the measured colour of the
+     artwork's own right edge, so the wash continues the picture at the join
+     instead of butting against it. */
+  background: linear-gradient(to right,
+    var(--blue-200) 0%,
+    #c4e6fc 49%,
+    #dcefff 63%,
+    var(--blue-50) 80%,
+    var(--paper) 100%);
+}
+
+/* The artwork is opaque and its own blue field runs off the left and bottom
+   edges, so it is never framed or floated — it bleeds, and the copy panel's
+   gradient picks up where its right edge leaves off. */
+.hero-art {
+  min-inline-size: 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero-art img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  /* Anchored to the RIGHT edge — the edge that meets the copy column. Any
+     horizontal crop then eats the left side, which bleeds off the page edge. */
+  object-position: right bottom;
+  display: block;
+}
+
+/* Two-column only. The artwork's right edge is not one colour — it ramps from
+   #e6f4ff at the top through #63c4f3 near the bottom — so no single gradient
+   stop can meet it cleanly along its whole height. Dissolving the last strip
+   of the picture into the wash removes the boundary instead of trying to
+   colour-match it. Below 861px the art is full-bleed and there is no joint. */
+@media (min-width: 861px) {
+  .hero-art img {
+    mask-image: linear-gradient(to right, #000 calc(100% - 72px), transparent 100%);
+  }
+}
+
+.hero-copy {
+  text-align: start;
+  align-self: center;
+  min-inline-size: 0;
+  container-type: inline-size;
+  padding-block: clamp(30px, 4vw, 54px) clamp(28px, 3.6vw, 48px);
+  /* start = the outer right edge, end = the edge that meets the art */
+  padding-inline: var(--pad) clamp(16px, 2.4vw, 34px);
+}
+
+.hero h1 {
+  font-weight: 800;
+  line-height: 1.17;
+  letter-spacing: -.012em;
+  font-size: clamp(28px, 4.6vw, 50px);
+  margin-block-end: 18px;
+  color: var(--ink);
+}
+/* Each span is its own line by virtue of display:block. No nowrap — a span may
+   wrap on a very narrow screen rather than overflow the page. */
+.hero h1 span { display: block; }
+.hero h1 .blue { color: var(--blue-600); }
+
+/* Size the headline against the copy column, not the viewport, so the three
+   lines stay proportional whatever the column is doing. */
+@container (min-width: 0px) {
+  .hero h1 { font-size: clamp(28px, 9.6cqi, 50px); }
+}
+
+.lead {
+  font-family: var(--font-head);
+  font-size: clamp(19px, 2.1vw, 24px);
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+  color: var(--ink-strong);
+}
+.sub {
+  font-size: clamp(17px, 1.85vw, 20px);
+  line-height: 1.55;
+  color: var(--ink-body);
+  margin: 4px 0 22px;
+}
+
+.hero .micro { text-align: start; }
+
+/* --- 5. Call to action --------------------------------------------------- */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-inline-size: 100%;
+  padding: 15px 26px;
+  min-block-size: 62px;
+  border-radius: var(--r-pill);
+  background: var(--go);          /* flat: the old gradient's light end was 4.32:1 */
+  color: #fff;
+  font-family: var(--font-head);
+  font-size: clamp(18px, 1.9vw, 22px);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shadow-go);
+  transition: background var(--fast) var(--ease),
+              transform var(--fast) var(--ease),
+              box-shadow var(--fast) var(--ease);
+}
+.cta > svg { inline-size: 32px; block-size: 32px; flex: none; }
+.cta > .arrow { inline-size: 18px; block-size: 22px; transition: transform var(--mid) var(--ease); }
+.cta:hover { background: var(--go-dark); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(10,110,48,.32); }
+.cta:hover > .arrow { transform: translateX(-4px); }   /* forward is leftward in RTL */
+.cta:active { transform: translateY(0); box-shadow: var(--shadow-go); }
+.cta:focus-visible { outline-color: var(--go-deep); outline-offset: 4px; }
+
+.micro {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  text-align: center;
+  margin: 12px 0 0;
+}
+
+/* --- 6. Feature cards ---------------------------------------------------- */
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  padding: var(--section-y) var(--pad) 0;
+}
+
+.feature {
+  text-align: center;
+  padding: 26px 16px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-1);
+}
+/* The icon gets a tinted tile without touching the markup: padding on the svg
+   plus content-box sizing turns the glyph itself into the tile. */
+.feature svg {
+  box-sizing: content-box;
+  inline-size: 27px;
+  block-size: 27px;
+  padding: 14px;
+  border-radius: var(--r-md);
+  background: var(--blue-100);
+  color: var(--blue-600);
+}
+.feature h2 {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 14px 0 6px;
+  color: var(--ink-strong);
+}
+.feature p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-body);
+  margin: 0;
+}
+
+/* --- 7. Intro ------------------------------------------------------------ */
+.intro {
+  text-align: center;
+  padding: var(--section-y) var(--pad) 0;
+}
+h2 {
+  font-size: clamp(25px, 3.1vw, 34px);
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0 0 14px;
+  color: var(--ink);
+}
+.intro p {
+  font-size: clamp(17px, 1.7vw, 19px);
+  max-inline-size: 72ch;
+  margin: 0 auto 10px;
+  color: var(--ink-body);
+}
+
+/* The access-transfer disclosure. Deliberately full-size body text in a quiet
+   container — it is information the reader needs, not fine print. */
+.intro .disclosure {
+  font-size: 16.5px;
+  line-height: 1.75;
+  text-align: start;
+  color: var(--ink-strong);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-inline-start: 4px solid var(--blue-500);
+  border-radius: var(--r-md);
+  /* Flatten the two corners the thick accent meets, so it reads as a clean
+     rule rather than a wedge tapering into the curve. */
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+  padding: 16px 20px;
+  max-inline-size: 72ch;
+  margin: 24px auto 0;
+}
+
+/* --- 8. FAQ -------------------------------------------------------------- */
+.faq { padding: var(--section-y) var(--pad) 0; }
+.faq .section-heading { text-align: center; margin-block-end: 24px; }
+
+.faq details {
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--paper);
+  margin-block-end: 10px;
+  padding-inline: 22px;
+  transition: border-color var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
+}
+.faq details:hover { border-color: var(--line-strong); }
+.faq details[open] { border-color: var(--blue-300); box-shadow: var(--shadow-1); }
+
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font-family: var(--font-head);
+  font-size: clamp(17px, 1.8vw, 20px);
+  font-weight: 700;
+  line-height: 1.5;
+  padding-block: 18px;
+  color: var(--ink-strong);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:focus-visible { outline-offset: -2px; border-radius: var(--r-sm); }
+
+/* A chevron drawn from two borders. The borders are deliberately PHYSICAL:
+   the shape is rotated into a mirror-symmetric arrow, so it must point the
+   same way in either direction — logical borders would mirror it for nothing.
+   Borders also survive forced-colors mode, where a background-image marker is
+   dropped and would leave the control with no state indicator at all. */
+.faq summary::after {
+  content: "";
+  inline-size: 9px;
+  block-size: 9px;
+  flex: none;
+  margin-block-start: -5px;
+  border-right: 2.5px solid var(--blue-600);
+  border-bottom: 2.5px solid var(--blue-600);
+  transform: rotate(45deg);
+  transition: transform var(--mid) var(--ease), margin-block-start var(--mid) var(--ease);
+}
+.faq details[open] summary::after { transform: rotate(225deg); margin-block-start: 4px; }
+
+.answer {
+  color: var(--ink-body);
+  font-size: 16.5px;
+  line-height: 1.8;
+  padding-block-end: 20px;
+}
 .answer p { margin: 0; }
-footer { font-size: 13px; }
-footer .footer-note { max-width: 730px; margin: 0 auto 12px; }
-.phone a { color: inherit; text-underline-offset: 4px; }
-.faq .section-heading { margin-bottom: 24px; }
-body.modal-open { overflow: hidden; }
-dialog { max-height: min(85svh, 720px); padding: 48px 27px 30px; }
-dialog:not([open]) { display: none; }
-dialog[open] { animation: modal-enter .18s ease-out; }
-dialog .modal-icon { width: 88px; height: 88px; background: linear-gradient(145deg,#11bc4b,#078636); box-shadow: 0 10px 24px #07973521; }
-dialog .modal-icon svg { width: 59px; height: 59px; }
+
+/* Progressive enhancement: animate the disclosure where the browser can size
+   to a keyword. Guarded twice, and the open state sets auto either way. */
+@supports (interpolate-size: allow-keywords) and selector(details::details-content) {
+  :root { interpolate-size: allow-keywords; }
+  .faq details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size var(--mid) var(--ease), content-visibility var(--mid) allow-discrete;
+  }
+  .faq details[open]::details-content { block-size: auto; }
+}
+
+/* --- 9. Closing ---------------------------------------------------------- */
+.closing {
+  text-align: center;
+  margin-block-start: var(--section-y);
+  padding: clamp(32px, 4vw, 48px) var(--pad);
+  background: linear-gradient(180deg, var(--surface), var(--blue-50));
+  border-block-start: 1px solid var(--line);
+}
+.closing .micro { margin-block-start: 14px; }
+
+/* Latin digits inside a Hebrew page: keep them even and isolated. Used by the
+   phone number in the FAQ answer. */
+bdi { font-variant-numeric: tabular-nums; unicode-bidi: isolate; }
+
+/* --- 10. Footer ---------------------------------------------------------- */
+footer {
+  text-align: center;
+  padding: 26px var(--pad) 30px;
+  border-block-start: 1px solid var(--line);
+  background: var(--paper);
+}
+/* The independence notice leads the footer at readable size — it is a
+   statement the reader is meant to actually read. */
+footer p:first-of-type {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink-strong);
+  margin: 0 0 10px;
+}
+footer .footer-note {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-muted);
+  max-inline-size: 68ch;
+  margin: 0 auto 16px;
+}
+
+.show-popup {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+  font-size: 13.5px;
+  font-weight: 600;
+  border: 1px solid var(--line-control);
+  padding: 9px 20px;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--ink-body);
+  cursor: pointer;
+  transition: background var(--fast) var(--ease), border-color var(--fast) var(--ease), color var(--fast) var(--ease);
+}
+.show-popup:hover { background: var(--blue-100); border-color: var(--blue-300); color: var(--blue-700); }
+
+/* --- 11. Offer dialog ---------------------------------------------------- */
+dialog {
+  inline-size: min(470px, calc(100% - 32px));
+  max-block-size: min(86svh, 720px);
+  /* The dialog itself never scrolls — .modal-body does — so the absolutely
+     positioned close button stays anchored to the dialog's own corner. */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background: linear-gradient(170deg, var(--paper) 0%, var(--blue-50) 100%);
+  color: var(--ink);
+  text-align: center;
+  box-shadow: var(--shadow-3);
+  opacity: 0;
+  transform: translateY(10px) scale(.985);
+  transition: opacity var(--mid) var(--ease), transform var(--mid) var(--ease),
+              overlay var(--mid) allow-discrete, display var(--mid) allow-discrete;
+}
+dialog[open] { opacity: 1; transform: none; }
+
+.modal-body {
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 46px 28px 30px;
+}
+@starting-style { dialog[open] { opacity: 0; transform: translateY(10px) scale(.985); } }
+
+dialog::backdrop {
+  background: rgba(6, 20, 52, .55);
+  opacity: 0;
+  transition: opacity var(--mid) var(--ease), overlay var(--mid) allow-discrete, display var(--mid) allow-discrete;
+}
+dialog[open]::backdrop { opacity: 1; }
+@starting-style { dialog[open]::backdrop { opacity: 0; } }
+
+.close-popup {
+  position: absolute;
+  inset-block-start: 10px;
+  inset-inline-end: 12px;         /* RTL → the physical left corner */
+  inline-size: 44px;
+  block-size: 44px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: background var(--fast) var(--ease), color var(--fast) var(--ease);
+}
+.close-popup:hover { background: var(--blue-100); color: var(--ink); }
+.close-popup svg { inline-size: 22px; block-size: 22px; }
+
+.modal-icon {
+  inline-size: 84px;
+  block-size: 84px;
+  border-radius: 50%;
+  background: var(--go);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  box-shadow: var(--shadow-go);
+}
+.modal-icon svg { inline-size: 54px; block-size: 54px; }
+
+dialog h2 { font-size: clamp(24px, 5.6vw, 29px); line-height: 1.3; }
 dialog h2 span { display: block; }
-dialog h2 .blue { color: #0962ed; }
-dialog .cta { width: 100%; font-size: 21px; }
-dialog .modal-note { font-size: 12px; line-height: 1.6; margin: 14px 0 0; }
-.close-popup { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; }
-.close-popup:hover { background: #e9f1ff; }
-.close-popup svg { width: 24px; height: 24px; }
-@keyframes modal-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-@media (min-width: 701px) and (max-width: 930px) { .hero h1 { font-size: clamp(28px,3.8vw,35px); } .hero-copy { padding-right: 20px; } .hero .cta { padding-inline: 14px; gap: 7px; } .hero .cta>svg { width: 29px; height: 29px; } .hero .cta>.arrow { width: 16px; } .hero .lead { font-size: 18px; } .feature h2 { font-size: 17px; } .feature p { font-size: 14px; } }
-@media (max-width: 700px) { .hero-copy { padding: 30px 18px 24px; } .hero h1 { font-size: clamp(28px,8vw,42px); } .hero .lead { font-size: clamp(18px,4.5vw,21px); } .hero .sub { font-size: 18px; } .hero .cta { font-size: 19px; } .feature h2 { font-size: 17px; } .hero-art img { object-fit: contain; } dialog { padding-inline: 21px; } dialog h2 { font-size: 28px; } dialog .cta { font-size: 19px; } footer { font-size: 12px; } }
-@media (max-width: 360px) { .hero-copy { padding-inline: 12px; } .hero h1 { font-size: 28px; } .hero .cta,.cta,dialog .cta { font-size: 16px; padding-inline: 13px; gap: 8px; } .hero .cta>svg,.cta>svg { width: 27px; height: 27px; } .cta>.arrow { width: 16px; } .feature h2 { font-size: 15px; } .feature p { font-size: 12px; } dialog { padding-inline: 16px; } dialog h2 { font-size: 25px; } }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cta { transition: none; } dialog[open] { animation: none; } }
+dialog h2 .blue { color: var(--blue-600); }
+dialog p { color: var(--ink-body); margin: 12px 0 22px; }
+dialog .cta { inline-size: 100%; }
+dialog .modal-note {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  margin: 14px 0 0;
+}
+
+body:has(dialog[open]), body.modal-open { overflow: hidden; }
+
+/* --- 12. Responsive ------------------------------------------------------ */
+@media (min-width: 1216px) {
+  main { border-radius: var(--r-xl); margin-block: 28px; overflow: hidden; }
+}
+
+@media (max-width: 1000px) {
+  .features { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+@media (max-width: 860px) {
+  /* Stacked in DOM order — copy, then art. The wash moves onto the copy block
+     and ends on #dbeeff, which is the artwork's own top edge, so the two meet
+     without a seam wherever the copy happens to end. */
+  .hero { display: flex; flex-direction: column; background: var(--paper); }
+  .hero-copy {
+    text-align: center;
+    align-self: auto;
+    background: linear-gradient(180deg, var(--blue-50) 0%, #dbeeff 100%);
+    padding-block: clamp(28px, 6vw, 40px) clamp(26px, 5vw, 36px);
+    padding-inline: var(--pad);
+  }
+  .hero .micro { text-align: center; }
+  /* Meets the two-column size at the 860px boundary (36.8px) instead of
+     jumping to 44px the moment the layout stacks. */
+  .hero h1 { font-size: clamp(28px, 7.4vw, 37px); }
+  .hero .cta { inline-size: 100%; max-inline-size: 420px; }
+  /* No fixed-height band and no letterboxing: the artwork keeps its own
+     aspect ratio and its blue field runs edge to edge, so nothing seams. */
+  .hero-art { aspect-ratio: 517 / 495; }
+  .hero-art img { object-position: center bottom; }
+}
+
+/* Deliberately NO height cap on the stacked artwork. A max-block-size wins
+   over aspect-ratio and makes object-fit:cover slice the picture — at 768x1024
+   it cut 17.6% off the top, through the "facebook" wordmark and the phone's
+   notch, and it also replaced the flat pale top edge (which the copy gradient
+   above is colour-matched to) with a hard band of bezel and UI. The copy and
+   the CTA are both above the art in this layout, so a tall illustration below
+   them costs nothing. */
+
+@media (max-width: 620px) {
+  .features { gap: 10px; }
+  .feature { padding: 22px 12px 20px; border-radius: var(--r-md); }
+  .feature svg { inline-size: 24px; block-size: 24px; padding: 12px; }
+  .feature h2 { font-size: 16.5px; margin-block-start: 12px; }
+  .feature p { font-size: 14px; }
+  .faq details { padding-inline: 16px; }
+  .faq summary { padding-block: 16px; gap: 12px; }
+  .intro .disclosure { padding: 14px 16px; font-size: 16px; }
+  footer p:first-of-type { font-size: 15.5px; }
+  .modal-body { padding: 44px 20px 26px; }
+}
+
+/* One column from 480px down — two-up cards get too narrow to read below that,
+   and 414/430px are common phone widths. The card turns into an icon-beside-
+   text row, which uses the width far better than a centred stack. */
+@media (max-width: 480px) {
+  .features { grid-template-columns: 1fr; }
+  .feature { text-align: start; display: grid; grid-template-columns: auto 1fr; column-gap: 14px; align-items: center; padding: 16px; }
+  .feature svg { grid-row: span 2; inline-size: 22px; block-size: 22px; padding: 11px; }
+  .feature h2 { font-size: 17px; margin: 0; align-self: end; }
+  .feature p { font-size: 14.5px; align-self: start; }
+}
+
+/* Smallest phones only: the controls themselves come down a step. */
+@media (max-width: 400px) {
+  .cta { font-size: 17px; padding-inline: 18px; gap: 9px; min-block-size: 58px; }
+  .cta > svg { inline-size: 27px; block-size: 27px; }
+  .modal-icon { inline-size: 72px; block-size: 72px; }
+  .modal-icon svg { inline-size: 46px; block-size: 46px; }
+}
+
+/* --- 13. Forced colors --------------------------------------------------- */
+/* In Windows High Contrast the UA drops background-image and box-shadow, so a
+   control whose shape comes only from a fill loses its outline entirely. A
+   transparent border is inert normally and gets repainted by the UA there. */
+@media (forced-colors: active) {
+  .cta, .skip-link, .close-popup, .show-popup, .feature, .faq details, .intro .disclosure, dialog {
+    border: 1px solid transparent;
+  }
+  .modal-icon { border: 1px solid transparent; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline-color: Highlight; }
+}
+
+/* --- 14. Reduced motion -------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  /* ::backdrop and ::details-content are NOT reachable through *, *::before or
+     *::after — they have to be named, or the two largest animations on the
+     page (the dialog backdrop fade and the FAQ expansion) keep running. */
+  *, *::before, *::after, *::backdrop, .faq details::details-content {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .cta:hover { transform: none; }
+}
+
+/* --- 15. Print ----------------------------------------------------------- */
+@media print {
+  body { background: #fff; }
+  main { box-shadow: none; max-inline-size: none; }
+  .skip-link, .show-popup, dialog { display: none !important; }
+  .faq details { break-inside: avoid; }
+}

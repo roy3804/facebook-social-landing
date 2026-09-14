@@ -2,7 +2,7 @@ import Image from "next/image";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import OfferPopup from "@/components/OfferPopup";
 import { FeatureIcon } from "@/components/Icons";
-import { site, whatsappUrl } from "@/lib/site";
+import { site } from "@/lib/site";
 
 const features = [
   { icon: "account", title: "חשבונות ישנים", text: "יש לכם חשבון פייסבוק ישן? פנו לקבלת פרטים נוספים." },
@@ -21,17 +21,22 @@ const questions = [
 export default function Home() {
   return <>
     <a className="skip-link" href="#main-content">דילוג לתוכן העמוד</a>
-    <main id="main-content">
+    {/* tabIndex={-1} so the skip link actually moves focus here; without it the
+        fragment jump scrolls but leaves focus on <body>. */}
+    <main id="main-content" tabIndex={-1}>
+      {/* Copy first, illustration second. In an RTL grid the first column is the
+          right-hand one, so this renders art-left / copy-right exactly as before,
+          but a screen reader now reaches the headline before the illustration. */}
       <section className="hero" aria-labelledby="hero-heading">
-        <div className="hero-art">
-          <Image src="/phone-hero.webp" alt="איור של טלפון עם ממשק פייסבוק ואייקונים כחולים" width={517} height={495} preload unoptimized sizes="(max-width: 700px) 100vw, 560px" />
-        </div>
         <div className="hero-copy">
           <h1 id="hero-heading"><span>יש לכם חשבונות</span><span className="blue">פייסבוק ישנים</span><span>או לא בשימוש?</span></h1>
           <p className="lead">יש לנו הצעה מעניינת בשבילכם</p>
           <p className="sub">שלחו הודעה לפרטים נוספים</p>
           <WhatsAppButton />
           <p className="micro">ההודעה תישלח רק לאחר שתאשרו את שליחתה</p>
+        </div>
+        <div className="hero-art">
+          <Image src="/phone-hero.webp" alt="איור של טלפון עם ממשק פייסבוק ואייקונים כחולים" width={517} height={495} preload unoptimized sizes="(max-width: 860px) 100vw, 560px" />
         </div>
       </section>
 
@@ -56,7 +61,6 @@ export default function Home() {
 
       <section className="closing" aria-label="יצירת קשר">
         <WhatsAppButton />
-        <p className="phone"><a href={whatsappUrl} aria-label="יצירת קשר בוואטסאפ"><bdi dir="ltr">{site.displayPhone}</bdi></a></p>
         <p className="micro">פתיחת השיחה אינה שולחת הודעה אוטומטית</p>
       </section>
 
