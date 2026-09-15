@@ -30,10 +30,34 @@ const text = Heebo({
 });
 
 export const metadata: Metadata = {
-  title: "חשבונות פייסבוק ישנים | פרטים ויצירת קשר",
+  // Every og:* URL is resolved against this. Setting it explicitly is what stops
+  // Next resolving a relative image against the per-deployment VERCEL_URL, which
+  // on a preview build is behind Vercel Authentication and unreadable to Meta.
+  metadataBase: new URL(site.url),
+  title: site.metaTitle,
   description: site.description,
   // Kept out of search indexing until the owner is ready. Same page for every visitor.
+  // noindex is for search engines; facebookexternalhit ignores it and still builds
+  // a link preview, so the og block below is what a paid click actually shows.
   robots: { index: false, follow: false },
+  // Built only from strings that already exist in lib/site.ts — no new claims.
+  openGraph: {
+    type: "website",
+    locale: "he_IL",
+    url: "/",
+    title: site.metaTitle,
+    description: site.description,
+    // alt is the headline the card actually draws, so it describes the image.
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: site.title, type: "image/jpeg" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.metaTitle,
+    description: site.description,
+    images: ["/og.jpg"],
+  },
+  // One paste target. An empty domainVerification emits no tag at all.
+  ...(site.domainVerification ? { other: { "facebook-domain-verification": site.domainVerification } } : {}),
 };
 export const viewport: Viewport = {
   width: "device-width",

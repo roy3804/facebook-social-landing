@@ -20,7 +20,20 @@ export const site = {
   pixelEnabled: true,
   pixelClickEvent: "Contact",
   title: "יש לכם חשבונות פייסבוק ישנים או לא בשימוש?",
+  // The <title> and the og:title. Deliberately NOT site.title: that sentence is
+  // already drawn inside public/og.jpg, and Meta prints og:title as live text
+  // directly under the card — reusing it there makes the preview say the same
+  // thing twice. Both strings are the page's own.
+  metaTitle: "חשבונות פייסבוק ישנים | פרטים ויצירת קשר",
   description: "מידע על הצעה לשימוש בחשבון פייסבוק ולהעברת הגישה אליו, ויצירת קשר בוואטסאפ.",
+  // Absolute origin of the public production alias, with no trailing slash. Meta's
+  // crawler resolves nothing relative: og:image and og:url have to arrive absolute.
+  // This must be the alias, never a per-deployment *-hash.vercel.app URL — those sit
+  // behind Vercel Authentication and the crawler gets the login page instead.
+  url: "https://facebook-social-landing.vercel.app",
+  // Business Settings > Brand safety and suitability > Domains > Meta-tag verification.
+  // Paste ONLY the content value, not the whole tag. Empty string emits no tag at all.
+  domainVerification: "",
 } as const;
 
 export function createWhatsAppUrl(phone: string, message: string): string {
