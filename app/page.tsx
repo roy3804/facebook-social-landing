@@ -2,7 +2,6 @@ import Image from "next/image";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import OfferPopup from "@/components/OfferPopup";
 import { FeatureIcon } from "@/components/Icons";
-import { site } from "@/lib/site";
 
 const features = [
   { icon: "account", title: "חשבונות ישנים", text: "יש לכם חשבון פייסבוק ישן? פנו לקבלת פרטים נוספים." },
@@ -14,7 +13,7 @@ const features = [
 const questions = [
   { question: "אילו חשבונות רלוונטיים לפנייה?", answer: "חשבונות פייסבוק ישנים או שכבר לא בשימוש. את פרטי החשבון ואת התנאים מבררים בשיחה." },
   { question: "מה כוללת ההצעה?", answer: "ההצעה נוגעת לשימוש בחשבון ולהעברת הגישה אליו. בקשו את מלוא הפרטים והתנאים לפני קבלת החלטה." },
-  { question: "איך מקבלים פרטים נוספים?", answer: <>לוחצים על כפתור הוואטסאפ בעמוד ושולחים הודעה. המספר לפנייה הוא <bdi dir="ltr">{site.displayPhone}</bdi>.</> },
+  { question: "איך מקבלים פרטים נוספים?", answer: "לוחצים על כפתור הוואטסאפ בעמוד ושולחים הודעה. השיחה נפתחת בוואטסאפ ואפשר לכתוב משם." },
   { question: "האם צריך להזין כאן סיסמה או קוד אימות?", answer: "לא. בעמוד אין טופס התחברות או איסוף סיסמאות. אין להזין או למסור כאן קודי אימות." },
 ];
 
