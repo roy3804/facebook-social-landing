@@ -31,7 +31,7 @@ export default function Home() {
           <h1 id="hero-heading"><span>יש לכם חשבונות</span><span className="blue">פייסבוק ישנים</span><span>או לא בשימוש?</span></h1>
           <p className="lead">יש לנו הצעה מעניינת בשבילכם</p>
           <p className="sub">שלחו הודעה לפרטים נוספים</p>
-          <WhatsAppButton />
+          <WhatsAppButton placement="hero" />
           <p className="micro">ההודעה תישלח רק לאחר שתאשרו את שליחתה</p>
         </div>
         <div className="hero-art">
@@ -59,7 +59,7 @@ export default function Home() {
       </section>
 
       <section className="closing" aria-label="יצירת קשר">
-        <WhatsAppButton />
+        <WhatsAppButton placement="closing" />
         <p className="micro">פתיחת השיחה אינה שולחת הודעה אוטומטית</p>
       </section>
 

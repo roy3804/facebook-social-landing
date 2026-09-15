@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Rubik, Heebo } from "next/font/google";
+import MetaPixel from "@/components/MetaPixel";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -45,5 +46,8 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  return <html lang="he" dir="rtl" className={`${display.variable} ${text.variable}`}><body>{children}</body></html>;
+  // MetaPixel first in the body: the snippet has to run before the reader can
+  // leave, and it carries its own client enhancement, so this is the only line
+  // the pixel adds to the layout.
+  return <html lang="he" dir="rtl" className={`${display.variable} ${text.variable}`}><body><MetaPixel />{children}</body></html>;
 }

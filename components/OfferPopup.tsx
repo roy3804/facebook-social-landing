@@ -13,7 +13,7 @@ export default function OfferPopup() {
         <div className="modal-icon"><WhatsAppIcon /></div>
         <h2 id="popup-title"><span>להצעה משתלמת</span><span className="blue">היכנסו לוואטסאפ</span></h2>
         <p id="popup-description">שלחו הודעה לקבלת פרטי ההצעה.</p>
-        <WhatsAppButton label="כניסה לוואטסאפ" />
+        <WhatsAppButton label="כניסה לוואטסאפ" placement="dialog" />
         <p className="modal-note">אפשר לסגור את החלון ולהמשיך לקרוא. פתיחת השיחה אינה שולחת הודעה אוטומטית.</p>
       </div>
     </dialog>
