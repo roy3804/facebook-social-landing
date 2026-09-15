@@ -1,59 +1,62 @@
-# בדיקות שבוצעו
+# Verification — Gmail redesign
 
-תאריך הכנה: 9 בספטמבר 2026.
-עדכון אחרון: 14 בספטמבר 2026 — עיצוב מחדש והחלפת הפונט.
+## Test scope
 
-## עברו — הבדיקות המקוריות
+The TSX server components were transpiled and rendered into a local HTML fixture using a small test renderer. Chromium/Playwright evaluated that markup with the actual stylesheet and transpiled popup behavior.
 
-- בדיקת תחביר TypeScript/TSX לכל תשעת קובצי הקוד.
-- בדיקת TypeScript מחמירה עבור lib/site.ts ו־lib/popup.ts.
-- בדיקות יצירת קישור WhatsApp, קידוד הודעת הפתיחה ודחיית מספר בפורמט שגוי.
-- טעינת האיור, נוסח הכותרת, ארבע שאלות, והיעדר שדות סיסמה/טופס.
-- פתיחת הפופ־אפ אחרי העיכוב וסגירה באמצעות איקס, Escape ולחיצה מחוץ לחלון.
-- החזרת פוקוס לכפתור לאחר סגירה.
-- פתיחה וסגירה של כל ארבע השאלות.
-- פריסה ושאלות נפתחות כאשר JavaScript מכובה.
-- לכידת יעד כפתור הוואטסאפ בלחיצה ובדיקת המספר וההודעה, ללא פנייה לשרת WhatsApp וללא שליחת הודעה.
+This fixture is not a running Next.js app. It does not validate Next.js compilation, React hydration, generated route types, font downloading, production caching or deployment.
 
-## עברו — בדיקות העיצוב מחדש (14 בספטמבר 2026)
+The browser screenshots use Noto Sans Hebrew as a local preview fallback. The shipped application retains Rubik and Heebo through next/font/google.
 
-הרשת אינה חסומה עוד, ולכן הפריטים שהיו קודם ב"טרם אומתו" נבדקו בפועל:
+## Passed
 
-- `npm install` הושלם, ולאחריו `npm run typecheck` ו־`npm run build` מלא — שניהם עוברים.
-- העמוד נבדק תחת שרת Next.js אמיתי, גם ב־dev וגם ב־build ייצור (`next start`).
-- אפס שגיאות ואפס אזהרות בקונסולה בבניית הייצור, וללא אזהרת hydration.
-- כותרות האבטחה מ־next.config.ts נבדקו בתגובת HTTP אמיתית: X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy.
+- Ten project TS/TSX source files transpiled without syntax diagnostics; stylesheet parsed with PostCSS.
+- Responsive layout checked at widths 320, 360, 375, 390, 430, 620, 768, 860, 861, 1024, 1280, 1440 and 1920 px.
+- No horizontal document overflow at the checked widths.
+- Mock inbox caption remains below the rotated inbox at all checked widths.
+- Header contact button stays inside the viewport at all checked widths.
+- Main page contains one H1; its accessible name includes the complete Hebrew heading.
+- All internal navigation targets exist.
+- Four WhatsApp links use the same, unchanged original contact destination and message.
+- No password fields, email forms or account-login controls were added.
+- FAQ expands/collapses natively; the password/verification-code answer starts open.
+- Popup opens manually and after its configured 6-second delay.
+- Popup closes with the X, Escape, backdrop click and continue-reading button.
+- Keyboard focus goes to the close button, cycles within the popup, and returns to the previous element on close.
+- Small-screen popup tested at 320 × 568; close button remains reachable and content scrolls.
+- Popup works when sessionStorage throws an exception.
+- Already-shown suppression logic passed with a sessionStorage test double. Real cross-navigation browser storage was not integration-tested.
+- Reduced-motion mode disables the floating icon animation.
+- No console errors or JavaScript exceptions in the tested fixture.
+- No actual WhatsApp message was sent, and no real Gmail account was accessed.
 
-פונטים:
+## Not verified
 
-- Rubik (כותרות) ו־Heebo (טקסט רץ) נטענים דרך next/font, מתארחים עצמאית, ואין שום פנייה ל־fonts.googleapis.com או ל־fonts.gstatic.com בזמן ריצה.
-- ארבעה קובצי woff2, 86,824 בתים, כולם עם preload ואפס טעינות מאוחרות.
-- שני התת־קבוצות (hebrew + latin) נדרשות לשתי המשפחות: טווח ה־hebrew של גוגל אינו כולל U+0020, ולכן הרווחים בכותרת עברית מוגשים בידי פני ה־latin.
+- `npm ci` could not complete: this environment could not resolve/reach the npm registry. Package versions were retained from the upload; dependencies were not upgraded.
+- No full `npm run typecheck` against the actual Next/React packages.
+- No `npm run build`, `next start`, Next.js dev server, hydration or Vercel deployment verification.
+- Agent-browser CLI was unavailable locally and could not be installed offline. Playwright/Chromium was used for the fixture checks instead.
+- Managed browser navigation was restricted, so the fixture was supplied directly to Chromium with Playwright `set_content`, not fetched through a public or localhost URL.
+- No screen-reader audit, Lighthouse run, real iOS Safari or Android-device testing.
 
-נגישות וניגודיות:
+## Before publishing
 
-- 44 צמדי טקסט/רקע נמדדו מול הרקע המשוקלל האמיתי. כולם עוברים WCAG AA. הכשל הקודם (`.micro` ביחס 3.92:1) עומד כעת על 5.18:1 בגרוע ביותר, וכפתור הוואטסאפ עלה מ־4.32:1 ל־5.11:1.
-- כל יעדי הלחיצה הם 44 פיקסלים לפחות בממד הקטן (קודם 26).
-- דילוג לתוכן מעביר פוקוס בפועל (`tabIndex={-1}` על main).
-- מספר הטלפון הוסר מבלוק הסיום בלבד, מתחת לכפתור הוואטסאפ, מסיבות עיצוביות. הוא נותר בתשובה בשאלות הנפוצות וב־aria-label של הכפתור.
-- `prefers-reduced-motion` מכסה גם `::backdrop` וגם `::details-content`, שאינם נגישים דרך `*`.
-- נוסף בלוק `forced-colors: active` כדי שפקדים שצורתם מגיעה ממילוי בלבד לא ייעלמו.
+Run in the extracted project folder with Node.js 22 and network access:
 
-פריסה:
+```bash
+npm ci
+npm run typecheck
+npm run build
+npm run start -- -p 3302
+```
 
-- ללא גלילה אופקית ברוחבי 320, 360, 390, 414, 430, 480, 600, 700, 768, 820, 860, 862, 900, 1024, 1160, 1200, 1280, 1440 ו־1920 פיקסלים.
-- האיור מוצג ביחס המקור המדויק (517:495) בכל רוחב, ללא חיתוך כלל.
-- מעבר גובה הכותרת בגבול 860 פיקסלים הוא 0.9 פיקסל.
-- כרטיסי היתרונות עוברים 4 ← 2 ← 1 עמודות.
-- כפתור הסגירה בחלון ההצעה נשאר במקומו גם כשתוכן החלון נגלל במסך נמוך.
+Inspect the running Next.js page on desktop and mobile before deployment. The existing noindex/nofollow setting is intentionally unchanged.
 
-## עדיין לא אומתו
 
-- כתובת Production ב־Vercel והתנהגות לאחר פרסום. לא נוצר מאגר GitHub ולא נפרס אתר Vercel.
-- פתיחה בפועל באפליקציית WhatsApp בטלפון ובדפדפני Instagram/Facebook.
-- Safari ו־Firefox. כל הבדיקות לעיל בוצעו ב־Chromium בלבד.
-- שמירת sessionStorage בין טעינות באתר בעל origin אמיתי.
-- מקש Escape נבדק רק בעקיפין: החלון נפתח באמת כ־modal (`:modal` מתקיים) ואין דבר בעמוד שמבטל את ברירת המחדל של אירוע `cancel`, כלומר התנהגות הדפדפן חלה. סביבת האוטומציה בולעת את המקש ולכן לא נלחץ ישירות.
-- האיור הוא 517×495 בלבד ונמתח מעבר לגודלו במסכי טאבלט וטלפון. נדרש קובץ מקור גדול יותר; לא הוחלף.
+## Copy update — 2026-09-15
 
-התמונות הן צילומי תצוגת דפדפן מקומית, לא הוכחה לפרסום.
+- Replaced the old slogan in the inbox illustration's floating note and in the popup with the selected text: "חשבון Gmail ישן? שלחו הודעה לפרטים".
+- The floating note uses the question on its first line and the call to action on its second line.
+- The main headline, single-color headline stylesheet, contact details, dependencies and popup behavior are unchanged.
+- Verified the two edited TSX files with TypeScript syntax transpilation and compared all unchanged archive entries byte-for-byte.
+- This copy-only update was not re-tested in a browser or with a complete Next.js build. The earlier fixture checks above apply to the preceding design version.

@@ -3,11 +3,11 @@
 export const site = {
   phone: "972504674859",
   displayPhone: "050-467-4859",
-  message: "היי יש לי חשבון פייסבוק אשמח לפרטים נוספים",
+  message: "היי יש לי חשבון Gmail אשמח לפרטים נוספים",
   popupDelayMs: 6000,
   popupEnabled: true,
-  title: "יש לכם חשבונות פייסבוק ישנים או לא בשימוש?",
-  description: "מידע על הצעה לשימוש בחשבון פייסבוק ולהעברת הגישה אליו, ויצירת קשר בוואטסאפ.",
+  title: "יש לכם חשבונות גוגל ישנים או לא בשימוש?",
+  description: "מידע על הצעה לשימוש בחשבון Gmail ולהעברת הגישה אליו, ויצירת קשר בוואטסאפ. עמוד עצמאי, ללא קשר לגוגל.",
 } as const;
 
 export function createWhatsAppUrl(phone: string, message: string): string {

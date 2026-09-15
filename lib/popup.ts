@@ -1,13 +1,14 @@
 /** Native dialog enhancement. The page, FAQ and WhatsApp links also work without JavaScript. */
 export type PopupOptions = { enabled?: boolean; delayMs?: number; storageKey?: string };
 
-export function initializeOfferPopup({ enabled = true, delayMs = 6000, storageKey = "facebook-social-offer-shown-v1" }: PopupOptions = {}): () => void {
+export function initializeOfferPopup({ enabled = true, delayMs = 6000, storageKey = "google-social-offer-shown-v1" }: PopupOptions = {}): () => void {
   if (typeof document === "undefined") return () => {};
   const element = document.getElementById("offer-popup");
   if (!(element instanceof HTMLDialogElement) || typeof element.showModal !== "function") return () => {};
   const dialog: HTMLDialogElement = element;
   const triggers = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-open-offer]"));
-  const closeButton = dialog.querySelector<HTMLButtonElement>("[data-close-offer]");
+  const closeButtons = Array.from(dialog.querySelectorAll<HTMLButtonElement>("[data-close-offer]"));
+  const closeButton = closeButtons[0];
   let previousFocus: HTMLElement | null = null;
   let timer: ReturnType<typeof setTimeout> | undefined;
 
@@ -37,19 +38,39 @@ export function initializeOfferPopup({ enabled = true, delayMs = 6000, storageKe
     if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) close();
   }
 
+  // Keep Tab/Shift+Tab inside the modal, including the last-to-first boundary.
+  function onKeyDown(event: KeyboardEvent): void {
+    if (event.key !== "Tab") return;
+    const focusable = Array.from(dialog.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    )).filter(element => element.getClientRects().length > 0);
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!first || !last) return;
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   triggers.forEach(trigger => trigger.addEventListener("click", open));
-  closeButton?.addEventListener("click", close);
+  closeButtons.forEach(button => button.addEventListener("click", close));
   dialog.addEventListener("close", afterClose); // Includes the browser's native Escape behavior.
   dialog.addEventListener("click", onBackdrop);
+  dialog.addEventListener("keydown", onKeyDown);
   if (enabled && !wasShown()) {
     timer = setTimeout(() => { if (document.visibilityState !== "hidden") open(); }, Math.max(0, delayMs));
   }
   return () => {
     if (timer) clearTimeout(timer);
     triggers.forEach(trigger => trigger.removeEventListener("click", open));
-    closeButton?.removeEventListener("click", close);
+    closeButtons.forEach(button => button.removeEventListener("click", close));
     dialog.removeEventListener("close", afterClose);
     dialog.removeEventListener("click", onBackdrop);
+    dialog.removeEventListener("keydown", onKeyDown);
     if (dialog.open) dialog.close();
     document.body.classList.remove("modal-open");
   };

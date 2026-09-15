@@ -1,20 +1,19 @@
 import WhatsAppButton from "./WhatsAppButton";
-import { CloseIcon, WhatsAppIcon } from "./Icons";
+import { CloseIcon, ColorDots, GmailIcon } from "./Icons";
 import PopupBehavior from "./PopupBehavior";
 
 export default function OfferPopup() {
   return <>
-    {/* The close button sits outside .modal-body on purpose: .modal-body is the
-        scroller, so on a short viewport the content scrolls under a close
-        button that stays put, instead of the button scrolling out of reach. */}
     <dialog id="offer-popup" aria-labelledby="popup-title" aria-describedby="popup-description">
       <button className="close-popup" data-close-offer type="button" aria-label="סגירת חלון ההצעה"><CloseIcon /></button>
       <div className="modal-body">
-        <div className="modal-icon"><WhatsAppIcon /></div>
-        <h2 id="popup-title"><span>להצעה משתלמת</span><span className="blue">היכנסו לוואטסאפ</span></h2>
-        <p id="popup-description">שלחו הודעה לקבלת פרטי ההצעה.</p>
+        <div className="modal-icon"><GmailIcon /></div>
+        <p className="eyebrow">חשבון Gmail ישן? שלחו הודעה לפרטים</p>
+        <h2 id="popup-title">יש לנו הצעה.<br /><span className="text-blue">בואו נדבר עליה.</span></h2>
+        <p id="popup-description">שלחו הודעה לקבלת פרטי ההצעה לבעלי חשבונות Gmail ישנים. ההצעה נוגעת לשימוש בחשבון ולהעברת הגישה אליו.</p>
         <WhatsAppButton label="כניסה לוואטסאפ" />
-        <p className="modal-note">אפשר לסגור את החלון ולהמשיך לקרוא. פתיחת השיחה אינה שולחת הודעה אוטומטית.</p>
+        <button className="modal-continue" type="button" data-close-offer>אמשיך לקרוא בינתיים</button>
+        <div className="modal-independence"><ColorDots /><p className="modal-note">עמוד עצמאי, ללא קשר לגוגל או ל־Gmail.<br />פתיחת השיחה אינה שולחת הודעה אוטומטית.</p></div>
       </div>
     </dialog>
     <PopupBehavior />
