@@ -1,10 +1,6 @@
 # Project notes
 
-Preserve the approved Hebrew content, RTL, and blue/white style. Use editable markup, not a screenshot of a complete page.
-
-The hero illustration is public/phone-hero.svg — vector, drawn for this page. It replaced public/phone-hero.webp on 16 September 2026; that file was a stock 3D render carrying Facebook's own trade dress (the "facebook" wordmark, the blue "f" app tile, the Like thumb, a Groups glyph and a mock feed) on a page whose footer denies any affiliation with Meta, and it was publicly fetchable from the deployed site. It is recoverable at `git show 19cb1e6:public/phone-hero.webp` but must not be restored.
-
-The replacement must never carry a Facebook, Meta, Google, Instagram, WhatsApp or X mark, wordmark or app-icon lockup, and must contain no lettering of any script — every word on this page belongs in the markup. Avatars stay abstract silhouettes. A heart, a speech bubble and a share arrow are generic; a thumbs-up is not. Three geometry contracts the stylesheet depends on: viewBox "0 0 517 495"; a #dbeeff top edge across the full width (the stacked copy block's gradient ends there); and a bare, uniform #c4e6fc strip at x >= 439 with nothing drawn in it (the desktop copy column's gradient is #c4e6fc at the 49.02% join, and the 72px mask above 861px fades into it). Breaking any of the three produces a visible seam. Also keep the alt text free of product names — it is read aloud, and the old string said "ממשק פייסבוק".
+Preserve the approved Hebrew content, RTL, original phone illustration, and blue/white style. Use editable markup, not a screenshot of a complete page.
 
 Native details elements provide the FAQ. The native dialog is rendered on the server; PopupBehavior is a small client-side progressive enhancement. All WhatsApp buttons must use the single destination in lib/site.ts. Never add automatic navigation or sending.
 

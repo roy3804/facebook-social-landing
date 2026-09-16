@@ -35,10 +35,7 @@ export default function Home() {
           <p className="micro">ההודעה תישלח רק לאחר שתאשרו את שליחתה</p>
         </div>
         <div className="hero-art">
-          {/* Vector, so it stays sharp past the old 517px raster. The alt text
-              names no product: the previous string said "ממשק פייסבוק", which
-              asserted in the accessibility tree the affiliation the footer denies. */}
-          <Image src="/phone-hero.svg" alt="איור של טלפון עם פיד חברתי כללי, ולצידו שני אריחי אפליקציה מרחפים" width={517} height={495} preload unoptimized sizes="(max-width: 860px) 100vw, 560px" />
+          <Image src="/phone-hero.webp" alt="איור של טלפון עם ממשק פייסבוק ואייקונים כחולים" width={517} height={495} preload unoptimized sizes="(max-width: 860px) 100vw, 560px" />
         </div>
       </section>
 
