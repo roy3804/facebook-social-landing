@@ -589,8 +589,8 @@ body:has(dialog[open]), body.modal-open { overflow: hidden; }
 
 /* Deliberately NO height cap on the stacked artwork. A max-block-size wins
    over aspect-ratio and makes object-fit:cover slice the picture — at 768x1024
-   it cut 17.6% off the top, through the "facebook" wordmark and the phone's
-   notch, and it also replaced the flat pale top edge (which the copy gradient
+   it cut 17.6% off the top, through the phone's status bar and header, and it
+   also replaced the flat pale top edge (which the copy gradient
    above is colour-matched to) with a hard band of bezel and UI. The copy and
    the CTA are both above the art in this layout, so a tall illustration below
    them costs nothing. */
